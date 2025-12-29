@@ -1,0 +1,238 @@
+html {
+  font-size: 10px;
+  @media (width <= 992px) {
+    font-size: 9.5px;
+  }
+  @media (width <= 768px) {
+    font-size: 9px;
+  }
+  @media (width <= 479px) {
+    font-size: 8.5px;
+  }
+  @media (width <= 375px) {
+    font-size: 8px;
+  }
+}
+
+html > body {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  word-break: keep-all;
+  background-color: #dfdfdf;
+}
+//====================fullscreen-menu==========================================
+.fullscreen-menu {
+  z-index: 900;
+  visibility: hidden;
+  transition: visibility 0s 0.5s;
+
+  .left {
+    width: 59%;
+    height: 100%;
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  .right {
+    height: 100%;
+    width: 41%;
+    background-color: #f7f5f2;
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  .menu-header {
+    height: 100px;
+    align-items: center;
+    justify-content: end;
+    gap: 2.5rem;
+    padding-inline: 7rem;
+  }
+  .auth-box {
+    font-size: 1.6rem;
+    color: #888888;
+    li:first-child {
+      padding-right: 15px;
+      border-right: 1px solid #888888;
+    }
+    li:last-child {
+      padding-left: 15px;
+    }
+  }
+  .menu-body {
+    .menubox {
+      padding-left: 4.5rem;
+    }
+    .depth1 {
+      font-size: 4rem;
+      li {
+        margin-top: 2.5rem;
+      }
+    }
+    .depth2 {
+      display: flex;
+      font-size: 1.6rem;
+      color: #888888;
+      li {
+        padding-inline: 1.5rem;
+        &:not(:last-child) {
+          border-right: 1px solid #888888;
+        }
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+  .close-btn {
+    // transform: translateY(8px);
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .left-bar,
+    .right-bar {
+      width: 40px;
+      height: 2px;
+      background-color: #000;
+      transform-origin: center;
+    }
+    .left-bar {
+      transform: translateY(1.5px) rotate(45deg);
+    }
+    .right-bar {
+      transform: rotate(315deg);
+    }
+  }
+
+  &.active {
+    transition: visibility 0s 0s;
+    visibility: visible;
+    .left {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .right {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+//===========================header=======================================
+.header-wrap {
+  height: 100px;
+  padding-inline: 4rem;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  &.on {
+    background-color: #fff;
+    .logo-black {
+      display: block !important;
+    }
+    .logo-white {
+      display: none;
+    }
+    .menu-btn {
+      &::after,
+      &::before {
+        background-color: #000 !important;
+      }
+      .bar {
+        background-color: #000 !important;
+      }
+    }
+    .depth1 > li > a {
+      color: black;
+    }
+  }
+  .logobox {
+    display: flex;
+    align-items: center;
+    .logo-black {
+      display: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .logobox > img {
+    height: 26px;
+  }
+  .depth1 {
+    gap: 4.5rem;
+    height: 100%;
+  }
+  .depth1 > li {
+    font-size: 2rem;
+    color: #fff;
+    height: 100%;
+    a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    &:hover {
+      > .depth2 {
+        max-height: 76px;
+        padding-block: 27px;
+      }
+    }
+  }
+  .depth2 {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    max-height: 0;
+    top: 100%;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  .depth2 > li {
+    font-size: 1.5rem;
+    color: #888888;
+    padding-inline: 35px;
+    &:not(:last-child) {
+      border-right: 1px solid #888888;
+    }
+  }
+  .menu-btn-box {
+    &:hover {
+      cursor: pointer;
+    }
+    .menu-btn {
+      display: flex;
+      flex-direction: column;
+      height: 20px;
+      align-items: end;
+      justify-content: space-between;
+
+      .bar {
+        height: 2.5px;
+        width: 20px;
+        background-color: #fff;
+      }
+      &::after,
+      &::before {
+        content: "";
+        height: 2.5px;
+        background-color: #fff;
+        width: 31px;
+      }
+    }
+  }
+}

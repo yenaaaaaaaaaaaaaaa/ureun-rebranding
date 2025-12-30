@@ -1,4 +1,6 @@
+//===================var==================
 $header-height: 100px;
+//===================sns-icons=======================================
 .ri--instagram-fill {
   display: inline-block;
   width: 24px;
@@ -64,6 +66,7 @@ $header-height: 100px;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
+//==================================================================
 html {
   font-size: 10px;
   @media (width <= 992px) {
@@ -201,7 +204,10 @@ html > body {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  transition: all 0.3s 0.4s;
   &.on {
+    transition: all 0s 0s;
+
     background-color: #fff;
     .logo-black {
       display: block !important;
@@ -226,6 +232,8 @@ html > body {
     display: flex;
     align-items: center;
     .logo-black {
+      transition: all 0.5s;
+
       display: none;
     }
     &:hover {
@@ -288,12 +296,16 @@ html > body {
       justify-content: space-between;
 
       .bar {
+        transition: all 0.5s;
+
         height: 2.5px;
         width: 20px;
         background-color: #fff;
       }
       &::after,
       &::before {
+        transition: all 0.5s;
+
         content: "";
         height: 2.5px;
         background-color: #fff;

@@ -209,8 +209,10 @@ html > body {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  transition: all 0.3s 0.4s;
 }
 .header-wrap.on {
+  transition: all 0s 0s;
   background-color: #fff;
 }
 .header-wrap.on .logo-black {
@@ -233,6 +235,7 @@ html > body {
   align-items: center;
 }
 .header-wrap .logobox .logo-black {
+  transition: all 0.5s;
   display: none;
 }
 .header-wrap .logobox:hover {
@@ -291,11 +294,13 @@ html > body {
   justify-content: space-between;
 }
 .header-wrap .menu-btn-box .menu-btn .bar {
+  transition: all 0.5s;
   height: 2.5px;
   width: 20px;
   background-color: #fff;
 }
 .header-wrap .menu-btn-box .menu-btn::after, .header-wrap .menu-btn-box .menu-btn::before {
+  transition: all 0.5s;
   content: "";
   height: 2.5px;
   background-color: #fff;

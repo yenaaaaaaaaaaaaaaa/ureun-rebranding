@@ -87,7 +87,6 @@ html > body {
   font-family: "Playfair Display", serif;
   font-size: 1.4rem;
   word-break: keep-all;
-  background-color: #dfdfdf;
 }
 //====================fullscreen-menu==========================================
 .fullscreen-menu {
@@ -198,6 +197,11 @@ html > body {
   }
 }
 //===========================header=======================================
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
 .header-wrap {
   height: $header-height;
   padding-inline: 4rem;
@@ -314,12 +318,7 @@ html > body {
     }
   }
 }
-//==============================main===========================
-.main {
-  inset: 0;
-  border: 1px solid red;
-  height: calc(100vh - $header-height);
-}
+
 //====================footer====================================
 .footer {
   background-color: #edd9ca;

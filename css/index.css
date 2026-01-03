@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.main {
+  inset: 0;
+  border: 1px solid red;
+  height: 100vh;
+}
+
+.scrolltrigger-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.scrolltrigger-section .background {
+  background: url("../assets/images/유아른_files/mainbackground.jpg") no-repeat bottom/cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+.scrolltrigger-section .bg-overlay {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  max-height: 100% !important;
+  z-index: 2;
+  transition: background-color 0.5s;
+}
+.scrolltrigger-section .content {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+.scrolltrigger-section.active .content {
+  overflow-y: auto;
+}
+.scrolltrigger-section .content-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.scrolltrigger-section .title {
+  position: absolute;
+  z-index: 5;
+  top: 3px;
+  font-size: 16.5rem;
+  color: #fff;
+  margin-left: 8.6rem;
+}
+.scrolltrigger-section .title > p,
+.scrolltrigger-section .title div {
+  border: 1px solid red;
+  margin-bottom: 100vh;
+}
+.scrolltrigger-section .ureun {
+  margin-top: 60rem;
+  margin-bottom: 15rem !important;
+}
+.scrolltrigger-section .visual-wrap {
+  position: absolute;
+  z-index: 4;
+  margin-right: 8.6rem;
+  right: 0;
+  top: 0;
+  padding-top: 130rem;
+}
+.scrolltrigger-section .visual-wrap .visual-1 {
+  width: 76rem;
+  height: 50rem;
+  overflow-y: hidden;
+  border-radius: 15px;
+}

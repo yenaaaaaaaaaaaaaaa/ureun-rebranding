@@ -1,5 +1,4 @@
 console.clear();
-gsap.registerPlugin(ScrollTrigger);
 
 const headerMenuWrap = document.querySelector(".menuwrap");
 const headerWrap = document.querySelector(".header-wrap");

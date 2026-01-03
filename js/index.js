@@ -58,6 +58,40 @@ function handleWindowScroll() {
     }
   }
 }
+//================================================================
+function scrollTriggerSectionInit() {
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: scrollTriggerContent,
+        scroller: scrollTriggerContent,
+        start: "top top",
+        end: "top+=150 top",
+        scrub: 1,
+        markers: true,
+      },
+    })
+    .to(scrollTriggerOverlay, {
+      backgroundColor: "rgba(0,0,0,0.4)",
+      ease: "none",
+    })
+    .to(
+      headerWrap,
+      {
+        paddingInline: "2rem",
+        ease: "none",
+      },
+      0
+    )
+    .to(
+      headerMenuwrap,
+      {
+        autoAlpha: 0,
+        ease: "none",
+      },
+      0
+    );
+}
 // function scrollTriggerSectionInit() {
 //   ScrollTrigger.create({
 //     trigger: scrollTriggerTitle,
@@ -108,26 +142,7 @@ function handleWindowScroll() {
 //         markers: true,
 //       },
 //     })
-//     .to(scrollTriggerOverlay, {
-//       backgroundColor: "rgba(0,0,0,0.4)",
-//       ease: "none",
-//     })
-//     .to(
-//       headerWrap,
-//       {
-//         paddingInline: "2rem",
-//         ease: "none",
-//       },
-//       0
-//     )
-//     .to(
-//       headerMenuwrap,
-//       {
-//         autoAlpha: 0,
-//         ease: "none",
-//       },
-//       0
-//     );
+
 //   // gsap.to(gentleVeganCare, {
 //   //   scrollTrigger: {
 //   //     scrub: 1,
@@ -147,8 +162,9 @@ function handleWindowScroll() {
 //     scrub: true,
 //   });
 // }
-// scrollTriggerSectionInit();x
+scrollTriggerSectionInit();
+
 handleContentScroll();
 handleWindowScroll();
 scrollTriggerContent.addEventListener("scroll", handleContentScroll);
-window.addEventListener("scroll", handleWindowScroll, { passive: true });
+window.addEventListener("scroll", handleWindowScroll);

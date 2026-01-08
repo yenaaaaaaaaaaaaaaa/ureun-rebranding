@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .solar--arrow-right-linear {
   display: inline-block;
   width: 24px;
@@ -39,7 +38,7 @@
   overflow: hidden;
 }
 .scrolltrigger-section .background {
-  background: url("../assets/images/유아른_files/mainbackground.jpg") no-repeat bottom/cover;
+  background: url("../assets/images/ureun_files/mainbackground.jpg") no-repeat bottom/cover;
   position: absolute;
   top: 0;
   left: 0;

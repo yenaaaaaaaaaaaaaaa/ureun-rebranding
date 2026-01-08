@@ -24,7 +24,7 @@
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
-//
+//====================mixin=========================================
 @mixin product-card-1 {
   display: flex;
   flex-direction: column;
@@ -221,14 +221,16 @@
     position: relative;
   }
   .title {
+    width: 100%;
+    left: 0;
     position: absolute;
     z-index: 5;
     top: 3px;
     font-size: 16.5rem;
     color: #fff;
-    margin-left: 8.6rem;
-    // display: flex;
-    // flex-direction: column;
+    padding-inline: 8.6rem;
+    display: flex;
+    flex-direction: column;
     // gap: 100vh;
     > p,
     div {
@@ -243,7 +245,6 @@
   .visual-wrap {
     position: absolute;
     z-index: 4;
-    padding-inline: 8.6rem;
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -252,6 +253,7 @@
     padding-top: 100rem;
     width: 100%;
     .visual-1 {
+      margin-inline: 8.6rem;
       margin-top: 20rem;
       width: 76rem;
       height: 50rem;
@@ -259,6 +261,7 @@
       border-radius: 15px;
     }
     .visual-2 {
+      padding-inline: 8.6rem;
       margin-top: 90vh;
       height: 80vh;
       overflow: hidden;
@@ -279,6 +282,7 @@
       }
     }
     .visual-3 {
+      padding-inline: 8.6rem;
       margin-top: 50rem;
       width: 100%;
       display: flex;
@@ -339,14 +343,66 @@
     }
     .visual-4 {
       width: 100%;
-      margin-top: 90vh;
+      margin-top: 70vh;
+      overflow: hidden;
       .reviews-wrap {
         display: flex;
         gap: 15px;
-        overflow-x: hidden;
       }
       .reviews {
         @include reviews();
+      }
+    }
+    .visual-5 {
+      margin-top: 75vh;
+      padding-inline: 8.6rem;
+      width: 100%;
+      .membership-section {
+        width: 100%;
+        gap: 2.4rem;
+      }
+      .left,
+      .right {
+        padding-inline: 4rem;
+        padding-block: 4.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        border: 1px solid #fff;
+        width: 50%;
+        flex: 1;
+        height: 36rem;
+        border-radius: 2.1rem;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(8px);
+      }
+      .right {
+        margin-top: 8.5rem;
+      }
+      .membership-title {
+        font-size: 4.8rem;
+        font-weight: 700;
+      }
+      .desc {
+        font-family: sans-serif;
+        font-size: 2rem;
+      }
+      .more {
+        align-self: flex-end;
+        padding-inline: 1.7rem;
+        padding-block: 1rem;
+        border-radius: 40px;
+        color: #fff;
+        border: 1px solid #fff;
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          font-size: 1.5rem;
+        }
       }
     }
   }

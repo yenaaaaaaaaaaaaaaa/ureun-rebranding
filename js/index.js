@@ -13,8 +13,13 @@ const scrollTriggerOverlay = document.querySelector(
 const scrollTriggerContent = document.querySelector(
   ".scrolltrigger-section .content"
 );
+const scrollTriggerContentWrapper =
+  scrollTriggerContent.querySelector(".content-wrapper");
 const scrollTriggerTitle = document.querySelector(
   ".scrolltrigger-section .title"
+);
+const scrollTriggerVisualWrap = document.querySelector(
+  ".scrolltrigger-section .visual-wrap"
 );
 const visualWrap = document.querySelector(".visual-wrap");
 const headerMenuwrap = document.querySelector(".header-wrap .menuwrap");
@@ -35,12 +40,12 @@ function handleContentScroll() {
   // const y = scrollTriggerContent.scrollTop;
   // console.log(y);
   // console.log(isActive);
-  if (isTop(scrollTriggerContent)) {
+  if (isTop(scrollTriggerContentWrapper)) {
     if (!isActive) {
       addClass(scrollTriggerSection, "active");
       document.body.style.overflow = "hidden";
     }
-  } else if (isBottom(scrollTriggerContent)) {
+  } else if (isBottom(scrollTriggerContentWrapper)) {
     if (isActive) {
       removeClass(scrollTriggerSection, "active");
       document.body.style.overflow = "";
@@ -50,7 +55,7 @@ function handleContentScroll() {
 function handleWindowScroll() {
   const isActive = scrollTriggerSection.classList.contains("active");
   const y = window.scrollY;
-  console.log(y);
+  // console.log(y);
   if (!isActive) {
     if (y <= 0) {
       addClass(scrollTriggerSection, "active");
@@ -59,26 +64,30 @@ function handleWindowScroll() {
   }
 }
 //================================================================
-function scrollTriggerSectionInit() {
+function scrollTriggerInit() {
   gsap
     .timeline({
       scrollTrigger: {
-        trigger: scrollTriggerContent,
-        scroller: scrollTriggerContent,
+        trigger: scrollTriggerContentWrapper,
+        scroller: scrollTriggerContentWrapper,
         start: "top top",
         end: "top+=150 top",
         scrub: 1,
         markers: true,
       },
     })
-    .to(scrollTriggerOverlay, {
-      backgroundColor: "rgba(0,0,0,0.4)",
-      ease: "none",
-    })
+    .to(
+      scrollTriggerOverlay,
+      {
+        backgroundColor: "rgba(0,0,0,0.4)",
+        ease: "none",
+      },
+      0
+    )
     .to(
       headerWrap,
       {
-        paddingInline: "2rem",
+        opacity: "0.5",
         ease: "none",
       },
       0
@@ -92,44 +101,40 @@ function scrollTriggerSectionInit() {
       0
     );
 }
+function initScrollAnimation() {
+  gsap.to(scrollTriggerTitle, {
+    yPercent: -10,
+    scrollTrigger: {
+      trigger: scrollTriggerTitle,
+      scroller: scrollTriggerContentWrapper,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 2,
+    },
+  });
+  gsap.to(scrollTriggerVisualWrap, {
+    yPercent: -5,
+    scrollTrigger: {
+      trigger: scrollTriggerVisualWrap,
+      scroller: scrollTriggerContentWrapper,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 2,
+    },
+  });
+  // gsap.to(scrollTriggerContentWrapper, {
+  //   y: -100,
+  //   ease: "power4.out",
+  //   scrollTrigger: {
+  //     trigger: scrollTriggerContentWrapper,
+  //     scroller: scrollTriggerContent,
+  //     start: "top top",
+  //     end: "bottom bottom",
+  //     scrub: 7,
+  //   },
+  // });
+}
 // function scrollTriggerSectionInit() {
-//   ScrollTrigger.create({
-//     trigger: scrollTriggerTitle,
-//     scroller: scrollTriggerContent,
-//     start: "top top",
-//     end: "bottom bottom",
-//     pin: scrollTriggerOverlay,
-//     markers: true,
-//     pinSpacing: false,
-//     // onEnter: () => {
-//     //   gsap.to(scrollTriggerOverlay, {
-//     //     backgroundColor: "rgba(0,0,0,0.5)",
-//     //     duration: 0.2,
-//     //   });
-//     //   gsap.to(headerMenuwrap, {
-//     //     autoAlpha: 0,
-//     //     duration: 0.2,
-//     //   });
-//     //   gsap.to(headerWrap, {
-//     //     paddingInline: "2rem",
-//     //     duration: 0.2,
-//     //   });
-//     // },
-//     // onLeaveBack: () => {
-//     //   gsap.to(scrollTriggerOverlay, {
-//     //     backgroundColor: "rgba(0,0,0,0)",
-//     //     duration: 0.2,
-//     //   });
-//     //   gsap.to(headerMenuwrap, {
-//     //     autoAlpha: 1,
-//     //     duration: 0.2,
-//     //   });
-//     //   gsap.to(headerWrap, {
-//     //     paddingInline: "4rem",
-//     //     duration: 0.2,
-//     //   });
-//     // },
-//   });
 
 //   gsap
 //     .timeline({
@@ -162,9 +167,9 @@ function scrollTriggerSectionInit() {
 //     scrub: true,
 //   });
 // }
-scrollTriggerSectionInit();
-
+scrollTriggerInit();
+initScrollAnimation();
 handleContentScroll();
 handleWindowScroll();
-scrollTriggerContent.addEventListener("scroll", handleContentScroll);
+scrollTriggerContentWrapper.addEventListener("scroll", handleContentScroll);
 window.addEventListener("scroll", handleWindowScroll);

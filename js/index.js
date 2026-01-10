@@ -21,7 +21,11 @@ const scrollTriggerTitle = document.querySelector(
 const scrollTriggerVisualWrap = document.querySelector(
   ".scrolltrigger-section .visual-wrap"
 );
+const scrollTriggerSubTxtWrap = document.querySelector(
+  ".scrolltrigger-section .sub-txt-wrap"
+);
 const visualWrap = document.querySelector(".visual-wrap");
+const visual1 = visualWrap.querySelector(".visual-1");
 const headerMenuwrap = document.querySelector(".header-wrap .menuwrap");
 const gentleVeganCare = document.querySelector(".gentlevegancare");
 const bestSellers = document.querySelector(".bestsellers");
@@ -44,11 +48,13 @@ function handleContentScroll() {
     if (!isActive) {
       addClass(scrollTriggerSection, "active");
       document.body.style.overflow = "hidden";
+      // ScrollTrigger.refresh();
     }
   } else if (isBottom(scrollTriggerContentWrapper)) {
     if (isActive) {
       removeClass(scrollTriggerSection, "active");
       document.body.style.overflow = "";
+      // ScrollTrigger.refresh();
     }
   }
 }
@@ -60,6 +66,7 @@ function handleWindowScroll() {
     if (y <= 0) {
       addClass(scrollTriggerSection, "active");
       document.body.style.overflow = "hidden";
+      // ScrollTrigger.refresh();
     }
   }
 }
@@ -73,7 +80,7 @@ function scrollTriggerInit() {
         start: "top top",
         end: "top+=150 top",
         scrub: 1,
-        markers: true,
+        // markers: true,
       },
     })
     .to(
@@ -102,37 +109,52 @@ function scrollTriggerInit() {
     );
 }
 function initScrollAnimation() {
-  gsap.to(scrollTriggerTitle, {
-    yPercent: -10,
-    scrollTrigger: {
-      trigger: scrollTriggerTitle,
-      scroller: scrollTriggerContentWrapper,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 2,
-    },
-  });
-  gsap.to(scrollTriggerVisualWrap, {
-    yPercent: -5,
+  const offset = window.innerHeight;
+  const tl = gsap.timeline({
     scrollTrigger: {
       trigger: scrollTriggerVisualWrap,
       scroller: scrollTriggerContentWrapper,
       start: "top top",
-      end: "bottom bottom",
-      scrub: 2,
+      end: () =>
+        "+=" +
+        (scrollTriggerContentWrapper.scrollHeight -
+          scrollTriggerContentWrapper.clientHeight -
+          offset),
+
+      scrub: 3,
+      // markers: true,
+      invalidateOnRefresh: true,
     },
   });
-  // gsap.to(scrollTriggerContentWrapper, {
-  //   y: -100,
-  //   ease: "power4.out",
-  //   scrollTrigger: {
-  //     trigger: scrollTriggerContentWrapper,
-  //     scroller: scrollTriggerContent,
-  //     start: "top top",
-  //     end: "bottom bottom",
-  //     scrub: 7,
-  //   },
-  // });
+
+  tl.to(scrollTriggerSubTxtWrap, { y: -2500, ease: "none" }, 0)
+    .to(scrollTriggerTitle, { y: -3700, ease: "none" }, 0)
+    .to(scrollTriggerVisualWrap, { y: -1200, ease: "none" }, 0);
+}
+
+function GentleVeganCareScrollInit() {
+  const visual1_img = visual1.querySelector("img");
+  const img_scroll = visual1.scrollHeight - visual1.clientHeight * 1.3;
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: visual1,
+      scroller: scrollTriggerContentWrapper,
+      start: "bottom 125%",
+      end: "top 60%",
+      markers: true,
+      scrub: 5,
+      // pin: scrollTriggerContentWrapper,
+      // pinSpacing: true,
+    },
+  });
+  tl.to(
+    visual1_img,
+    {
+      y: -img_scroll,
+      ease: "none",
+    },
+    0
+  );
 }
 // function scrollTriggerSectionInit() {
 
@@ -171,5 +193,6 @@ scrollTriggerInit();
 initScrollAnimation();
 handleContentScroll();
 handleWindowScroll();
+GentleVeganCareScrollInit();
 scrollTriggerContentWrapper.addEventListener("scroll", handleContentScroll);
 window.addEventListener("scroll", handleWindowScroll);

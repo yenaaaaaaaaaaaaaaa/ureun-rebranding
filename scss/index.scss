@@ -164,6 +164,25 @@
     }
   }
 }
+@mixin more {
+  font-family: "Playfair Display", serif;
+  padding-inline: 1.7rem;
+  padding-block: 1rem;
+  border-radius: 40px;
+  color: #fff;
+  border: 1px solid #fff;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.5rem;
+  }
+  &:hover {
+    background-color: #fff;
+    color: #5b493b;
+  }
+}
 
 //==============================main===========================
 .main {
@@ -219,6 +238,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    overflow-y: hidden;
   }
   .title {
     width: 100%;
@@ -231,17 +251,27 @@
     padding-inline: 8.6rem;
     display: flex;
     flex-direction: column;
+    padding-top: 60rem;
     // gap: 100vh;
     > p,
     div {
       border: 1px solid red;
       margin-bottom: 100vh;
     }
+    .ureun {
+      margin-bottom: 15rem !important;
+    }
+    .bestsellers {
+      margin-bottom: 130vh !important;
+    }
+    .membership {
+      margin-bottom: 10vh !important;
+    }
+    .byskintype {
+      margin-bottom: 130vh;
+    }
   }
-  .ureun {
-    margin-top: 60rem;
-    margin-bottom: 15rem !important;
-  }
+
   .visual-wrap {
     position: absolute;
     z-index: 4;
@@ -254,7 +284,7 @@
     width: 100%;
     .visual-1 {
       margin-inline: 8.6rem;
-      margin-top: 20rem;
+      margin-top: 12rem;
       width: 76rem;
       height: 50rem;
       overflow-y: hidden;
@@ -262,7 +292,7 @@
     }
     .visual-2 {
       padding-inline: 8.6rem;
-      margin-top: 90vh;
+      margin-top: 53vh;
       height: 80vh;
       overflow: hidden;
       display: flex;
@@ -283,25 +313,14 @@
     }
     .visual-3 {
       padding-inline: 8.6rem;
-      margin-top: 50rem;
+      margin-top: 35rem;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: end;
       gap: 2.3rem;
       .more {
-        padding-inline: 1.7rem;
-        padding-block: 1rem;
-        border-radius: 40px;
-        color: #fff;
-        border: 1px solid #fff;
-        a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 2rem;
-          font-size: 1.5rem;
-        }
+        @include more();
       }
       .skin-type-section {
         width: 100%;
@@ -343,7 +362,7 @@
     }
     .visual-4 {
       width: 100%;
-      margin-top: 70vh;
+      margin-top: 90vh;
       overflow: hidden;
       .reviews-wrap {
         display: flex;
@@ -354,7 +373,7 @@
       }
     }
     .visual-5 {
-      margin-top: 75vh;
+      margin-top: 50vh;
       padding-inline: 8.6rem;
       width: 100%;
       .membership-section {
@@ -390,20 +409,44 @@
         font-size: 2rem;
       }
       .more {
-        align-self: flex-end;
-        padding-inline: 1.7rem;
-        padding-block: 1rem;
-        border-radius: 40px;
-        color: #fff;
-        border: 1px solid #fff;
-        a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 2rem;
-          font-size: 1.5rem;
-        }
+        @include more();
       }
+    }
+  }
+  .sub-txt-wrap {
+    z-index: 6;
+    padding-inline: 8.6rem;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 100vh;
+    color: #fff;
+    font-size: 2.5rem;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    .txt-1 {
+      margin-top: 50vh;
+    }
+    .txt-2 {
+      margin-top: 100vh;
+    }
+    .txt-3 {
+      margin-top: 120vh;
+    }
+    .txt-4 {
+      margin-top: 120vh;
+    }
+
+    .more {
+      @include more();
     }
   }
 }
